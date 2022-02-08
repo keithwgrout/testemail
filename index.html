@@ -1,0 +1,994 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+    <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+    <meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
+    <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no"> <!-- Tell iOS not to automatically link certain text strings. -->
+
+    <title></title> <!-- The title tag shows in email notifications, like Android 4.4. -->
+
+   
+    
+<!-- These tags activate dark mode wherever clients allow -->
+
+<!-- 
+    <meta name="color-scheme" content="light dark">
+    <meta name="supported-color-schemes" content="light dark">
+-->
+   
+    <!-- What it does: Makes background images in 72ppi Outlook render at correct size. -->
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+    
+<!--Outlook supports style tag in the head and the body. -->
+<!--ALL desktop clients support style in head.-->
+<!--All webmail clients support style in head, except aol mail.-->
+<!--These clients (mobile) don't suppport style in head.
+
+Gmail Android app IMAP
+Gmail mobile webmail
+Yahoo! Mail Android app
+-->
+    <!-- Web Font / @font-face : BEGIN -->
+    <!-- NOTE: If web fonts are not required, lines 40 - 57 can be safely removed. -->
+
+    <!-- Desktop Outlook chokes on web font references and defaults to Times New Roman, so we force a safe fallback font. -->
+    <!--[if mso]>
+        <style>
+            * {
+                font-family: sans-serif !important;
+            }
+        </style>
+    <![endif]-->
+
+   
+   
+    
+
+        
+
+        
+        
+<!--CSS Reset Begin-->
+        <style type="text/css">
+            
+            
+  /* What it does: Tells the email client that only light styles are provided but the client can transform them to dark. A duplicate of meta color-scheme meta tag above. */
+/* commented out until we implement dark mode
+        :root {
+          color-scheme: light dark;
+          supported-color-schemes: light dark;
+        }   
+*/
+            
+            
+/* What it does: Remove spaces around the email design added by some email clients. */
+/* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+    html, body {
+        margin: 0 auto !important;
+        padding: 0 !important;
+        height: 100% !important;
+        width: 100% !important;
+        background-color: #004F51;
+    }
+        
+        
+        /* What it does: Stops email clients resizing small text. */
+        * {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+ 
+        /* What it does: forces Samsung Android mail clients to use the entire viewport */
+        #MessageViewBody, #MessageWebViewDiv{
+            width: 100% !important;
+        }
+
+        /* What it does: Stops Outlook from adding extra spacing to tables. */
+        table,
+        td {
+            mso-table-lspace: 0pt !important;
+            mso-table-rspace: 0pt !important;
+        }
+
+        /* What it does: Fixes webkit padding issue. */
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            margin: 0 auto !important;
+        }
+     
+        /* What it does: Uses a better rendering method when resizing images in IE. */
+        img {
+            -ms-interpolation-mode:bicubic;
+        }
+        /* What it does: Prevents Windows 10 Mail from underlining links despite inline CSS. Styles for underlined links should be inline. */
+        a {
+            text-decoration: none;
+        }
+        p {
+            padding: 0;
+            margin: 0;
+        }
+/*Enhance*/
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
+        .hov:hover{
+            background-color: #ffffff !important;
+            border: 1px solid white!important;
+        }
+        * {
+          font-family: 'Roboto', sans-serif;  
+        }
+        table {
+/*            border: 1px solid red;*/
+        }
+        td {
+/*            border: 2px solid yellow;*/
+        }
+        
+        @media screen and (max-width: 600px) {
+            .onethirdimglast {
+                width: 200px!important;
+                max-width: 200px!important;
+            }
+            
+            
+            
+            
+/*neat little trick I learned. This will center the third img in a 3 column row. Otherwise, the table is 200px, and centered,  but the content extends past that and appears uncentered, because of the padding and additional width caused by above. So by enlarging the table size, the content recenters itself. I think alternatively we could just remove the padding. It's hard to explain unless you see it, so test this by shrinking the window to less than 600px and comment out this style declaration. */
+/*
+            .col-3 {
+                width: 250px!important;
+                max-width: 250px!important;
+            }
+*/
+            .col-3-padding {
+
+                padding-left: 0px!important;
+                padding-right: 0px!important;
+            }
+            
+        }
+        @media screen and (max-width: 400px) {
+            .banner {
+                height: auto!important;
+                padding-top: 50px!important;
+                padding-bottom: 30px!important;
+            }
+            .col-1-padding, .col-2-padding {
+                padding-left: 0px!important;
+                padding-right: 0px!important;
+            }
+            .onethirdimg {
+                width: 200px!important;
+                max-width: 200px!important;
+            }
+/*
+            .col-1, .col-2 {
+                width: 250px!important;
+                max-width: 250px!important;
+            }
+*/
+        }
+        
+        
+    </style>
+   
+    
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- we reinforce the margin and padding resets for the body.
+    min-width: 100% allows us to view our background color at the full window width of the email client. 
+    
+    The email background color (#004F51) is defined in three places:
+	1. body tag: for most email clients
+	2. center tag: for Gmail and Inbox mobile apps and web versions of Gmail, GSuite, Inbox, Yahoo, AOL, Libero, Comcast, freenet, Mail.ru, Orange.fr
+	3. mso conditional: For Windows 10 Mail, and Outlook Office 365 -->
+<body style="Margin:0; padding: 0; min-width:100%; background-color:#004F51; mso-line-height-rule: exactly;">
+   <!--[if (gte mso 9)|(IE)]>
+      <style type="text/css">
+         body {background-color: #004F51!important;}
+         body, table, td, p, a {font-family: sans-serif, Arial, Helvetica!important;}
+      </style>
+   <![endif]-->
+	<center style="width: 100%;table-layout:fixed;background-color: #004F51;padding-bottom: 40px;">
+		<div style="max-width: 620px;background-color: #004F51;box-shadow: 0 0 10px rgba(0, 0, 0, .2);">
+
+       
+        
+        
+        
+         <!-- Preheader (remove comment) -->
+         <div style="font-size: 0px;color: #fafdfe;line-height: 1px;mso-line-height-rule:exactly;display: none;max-width: 0px;max-height: 0px;opacity: 0;overflow: hidden;mso-hide:all;">
+            <!-- Add Preheader Text Here (85-100 characters in length)--> 
+            (Optional) This text will appear in the inbox preview, but not the email body. It can be used to supplement the email subject line or even summarize the email's contents. Extended text preheaders (~490 characters) seems like a better UX for anyone using a screenreader or voice-command apps like Siri to dictate the contents of an email. If this text is not included, email clients will automatically populate it using the text (including image alt text) at the start of the email's body.
+         </div>
+         <!-- End Preheader (remove comment) -->
+         
+         
+          <!-- Create white space after the desired preview text so email clients don’t pull other distracting text into the inbox preview. Extend as necessary. -->
+          
+        <!-- Preview Text Spacing Hack : BEGIN -->
+          <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
+	        &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+        </div>
+        
+        
+        <!-- Preview Text Spacing Hack : END -->
+            <!--[if (gte mso 9)|(IE)]>
+				<table width="620" align="center" style="border-spacing:0;color:#3d3d3d;" role="presentation">
+				<tr>
+				<td style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;">
+			<![endif]-->
+<table align="center" style="border-spacing:0;color:cornsilk;font-family: 'Roboto',sans-serif, Arial, Helvetica;background-color: #004F51;Margin:0;padding-top: 0;padding-right: 0;padding-bottom: 0;padding-left: 0;width: 100%;max-width: 620px;" role="presentation">
+
+
+
+
+<!--centered table-->
+<tr>
+   <td style="padding: 0;">
+       <table role="presentation" width="100%" style="width: 100%; border-spacing: 0;">
+           <tr>
+               <td style="text-align: center; background-color: coral; width: 100%; max-width: 600px; padding-top: 20px; padding-bottom: 20px;">
+                   <a href=""><img src="https://via.placeholder.com/300x100" alt="logo" width="180" border="0" style="border-width: 0"></a>
+               </td>
+           </tr>
+       </table>
+    </td>
+</tr>
+
+
+    
+
+    
+    
+    
+<!--Start Banner-->
+<tr>
+    <td class="banner" background="https://via.placeholder.com/650x400" width="650" height="400" style="background-position: center top;">
+    
+    
+    <!--[if (gte mso 9)|(IE)]>
+    <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:650px;height:400px;">
+        <v:fill type="tile" src="https://via.placeholder.com/650x400" />
+        <v:textbox inset="0,0,0,0">
+    <![endif]-->
+<!--Full pixel-width table (applied on td), centers next table and aligns it middle-->
+        <table class="darkmode-transparent" role="presentation" cellpadding="0" cellspacing="0" >
+            <tr>
+                <td width="650" align="center" valign="middle">
+<!--Table which wraps and center aligns the next table, our content table. Also can provide additional rows-->
+                    <table role="presentation" cellpadding="0" cellspacing="0" class="darkmode-transparent">
+                        <tr>
+                            <td align="center">
+<!--Content table. Centers the text and adds styling and content. -->
+                                <table role="presentation" class="darkmode-transparent">
+                                    <tr>
+                                       <!--[if (gte mso 9)|(IE)]>
+                                          <td style="padding-top:100px;padding-bottom:20px;"></td>
+                                       <![endif]-->
+                                        <td valign="middle" align="center" style="padding-bottom: 15px; padding-right: 10px; padding-left: 10px;  padding-top: 50px; vertical-align: middle; color: darkslategray;">
+                                            <p style="font-size: 30px; text-transform: uppercase; font-weight: bold; letter-spacing: 1px; padding: 20px;">Company Newsletter</p>
+                                            <p style="font-size: 18px; padding-top: 20px; padding: 20px;">The latest from our business.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td align="center">
+<!--Content table. Centers the text and adds styling and content. -->
+                                <table align="center" role="presentation" cellpadding="0" cellspacing="0" class="darkmode-transparent">
+                                    <tr>
+                                        <td align="center" bgcolor="coral" style="border-radius: 4px;">
+                                            <a class="hov" style="color: blue; padding: 12px 18px; background-color: coral; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 16px; border: 1px solid coral; display: inline-block;" href="">GET STARTED</a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td height="25"></td>
+            </tr>
+        </table>
+    <!--[if (gte mso 9)|(IE)]>
+    </v:textbox>
+    </v:rect>
+    <![endif]-->	
+    </td>		
+</tr>
+<!--End Banner-->
+
+
+
+
+
+
+
+
+<!--START FULL WIDTH TEXT AND BUTTONS-->
+<tr>
+    <td style="padding: 40px 0 0 0;">
+        <!--Width Table-->
+        <table style="border-spacing: 0; width: 100%;" role="presentation" width="100%">
+            <tr>
+                <td align="center" style="text-align: center; padding: 5px;">
+                    <!--Content Table-->
+                    <table style="border-spacing: 0;">
+                        <tr>
+                            <td>
+                                <p style="font-size: 20px; font-weight: bold; word-spacing: 1px;">Email Template <span style="color: coral;">Development</span></p>
+                                <p>Responsive HTML Email Templates that you can build around. Responsive HTML Email Templates that you can build around. Responsive HTML Email Templates that you can build around. Responsive HTML Email Templates that you can build around.</p>
+                            </td>
+                        </tr>
+                        <tr>
+<!--alignment table -->
+                           <td align="center">
+                               <table>
+                                <tr>
+                                    <td style="padding-bottom: 30px; padding-top: 20px;">
+<!--  content table-->
+                                        <table role="presentation" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td align="center" bgcolor="coral" style="border-radius: 4px;">
+<!--We use display: inline block in order to tell our buttons to shrink when we get low on room, instead of maintaining their width and causing display problems-->
+                                                    <a class="hov" style="color: blue; padding: 12px 18px; background-color: coral; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 16px; border: 1px solid coral; display: inline-block;" href="">GET STARTED</a>
+                                                </td>
+                                                <td style="width: 20px;">
+                                                </td>
+                                                <td align="center" bgcolor="coral" style="border-radius: 4px;">
+                                                    <a class="hov" style="color: blue; padding: 12px 18px; background-color: coral; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 16px; border: 1px solid coral; display: inline-block;" href="">GET STARTED</a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                           </td>
+                            
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<!--END FULL WIDTH TEXT AND BUTTONS-->
+
+
+
+
+
+
+
+<!--Invisible Spacer-->
+<tr>
+    <td style="width: 100%; height: 30px; padding: 0;">
+    </td>
+</tr>  
+
+
+
+<!--Visible Divider-->
+<tr>
+    <td style="background-color: coral; width: 100%; height: 6px; padding: 0;">
+    </td>
+</tr> 
+
+                
+                
+                
+                
+                
+
+
+
+<!--START 3 COLUMNS-->
+<tr>
+    <td style="padding: 0;">
+<!--Width Table (column wrapper)-->
+        <table width="100%" role="presentation" style="border-spacing: 0; width: 100%;">
+            <tr>
+                <td style="text-align: center; font-size: 0; padding-top: 40px; padding-bottom: 30px; padding-left: 0; padding-right: 0;">
+<!--Column Table-->
+                   <!--[if (gte mso 9)|(IE)]>
+										<table width="100%" style="border-spacing:0;" role="presentation">
+										<tr>
+										<td width="200" valign="top" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;">
+									<![endif]-->
+                    <table class="col-1" role="presentation" style="width: 100%; max-width: 200px; display: inline-block; border-spacing: 0; vertical-align: top;">
+                        <tr>
+                            <td class="col-1-padding" style="padding-top: 20px; padding-bottom: 20px; padding-right: 10px; padding-left: 10px;">
+                            <!--Content Table-->
+                                <table style="border-spacing: 0;">
+                                    <tr>
+                                        <td><a href="https://example.com"><img class="onethirdimg" src="https://via.placeholder.com/380x280" alt="" width="150" style="max-width: 150px; width: 100%;" ></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><p style="font-size: 20px;">Title</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p style="font-size: 15px;">Responsive HTML Email Templates that you can build around to master email development.</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size: 15px; padding-top: 5px;"><a style="color: coral; text-decoration: none;" href="https://example.com">Learn More...</a></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+<!--Column Table-->
+                   <!--[if (gte mso 9)|(IE)]>
+										</td><td width="200" valign="top" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;">
+									<![endif]-->
+                    <table class="col-2" role="presentation" style="width: 100%; max-width: 200px; display: inline-block; border-spacing: 0; vertical-align: top;">
+                        <tr>
+                            <td class="col-2-padding" style="padding-top: 20px; padding-bottom: 20px; padding-right: 10px; padding-left: 10px;">
+                            <!--Content Table-->
+                                <table style="border-spacing: 0;">
+                                    <tr>
+                                        <td><a href="https://example.com"><img class="onethirdimg" src="https://via.placeholder.com/380x280" alt="" width="150" style="width: 100%; max-width: 150px; height: auto;" ></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><p style="font-size: 20px;">Title</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p style="font-size: 15px;">Responsive HTML Email Templates that you can build around to master email development.</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size: 15px; padding-top: 5px;"><a style="color: coral; text-decoration: none;" href="https://example.com">Learn More...</a></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--[if (gte mso 9)|(IE)]>
+										</td><td width="200" valign="top" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;">
+									<![endif]-->
+<!--Column Table-->
+                    <table class="col-3" role="presentation" style="width: 100%; max-width: 200px; display: inline-block; border-spacing: 0; vertical-align: top;">
+                        <tr>
+                            <td class="col-3-padding" style="padding-top: 20px; padding-bottom: 20px; padding-right: 10px; padding-left: 10px;">
+                            <!--Content Table-->
+                                <table style="border-spacing: 0;">
+                                    <tr>
+                                        <td><a href="https://example.com"><img class="onethirdimglast" src="https://via.placeholder.com/380x280" alt="" width="150" style="width: 100%; max-width: 150px; height: auto;" ></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td><p style="font-size: 20px;">Title</p></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <p style="font-size: 15px;">Responsive HTML Email Templates that you can build around to master email development.</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="font-size: 15px; padding-top: 5px;"><a style="color: coral; text-decoration: none;" href="https://example.com">Learn More...</a></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--[if (gte mso 9)|(IE)]>
+                    </td>
+                    </tr>
+                    </table>
+                    <![endif]-->
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>                                                  
+<!--End 3 Columns-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--Start Quote-->
+<tr>
+    <td style="background-color: coral; text-align: center; padding: 30px 10px 30px 10px;">
+        <p style="font-weight: bold; padding-bottom: 20px; color: white;">"The w3newbie framework helped me learn how to create my own custom responsive HTML email templates."</p>
+        <p style="color: white;">-Jessica Green</p>
+    </td>
+</tr>                    
+<!--End Quote--> 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<!--Start Two Column Section-->
+<tr>
+    <td style="padding-top: 50px; padding-left: 0px; padding-bottom: 40px; padding-right: 0px;">
+        <table role="presentation" style="width: 100%; border-spacing: 0;">
+            <tr>
+                <td class="colwrap" style="text-align: center; font-size: 0; padding-left: 0; padding-right: 0;">
+<!--Column 1-->
+                   
+                   
+                   
+                   
+                   <!--[if (gte mso 9)|(IE)]>
+                              <table width="100%" style="border-spacing:0;" role="presentation">
+                              <tr>
+                              <td width="300" valign="top" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;">
+                           <![endif]-->
+                    <table role="presentation" style="display: inline-block; vertical-align: top; max-width: 300px; border-spacing: 0;">
+                        <tr>
+                            <td style="padding-bottom: 20px; padding-top: 20px; padding-left: 10px; padding-right: 10px;">
+                                <table style="border-spacing: 0;">
+                                    <tr>
+                                        <td>
+                                            <a href=""><img src="https://via.placeholder.com/560x420" alt="" width="280" style="max-width:280px; border-width: 0; width: 100%; display: block; height: auto;"></a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--[if (gte mso 9)|(IE)]>
+                           </td><td width="300" valign="top" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;">
+                           <![endif]-->
+                           
+                           
+                           
+<!--Column 2-->
+                    <table role="presentation" style="display: inline-block; vertical-align: top; max-width: 300px; border-spacing: 0;">
+                        <tr>
+                            <td style="padding-left: 20px; padding-right: 10px; padding-top: 20px;">
+                                <table role="presentation" style="border-spacing: 0; text-align: left;">
+                                    <tr>
+                                        <td style="padding-top: 10px; padding-bottom: 15px;">
+                                            <p style="font-weight: bold; font-size: 17px;">The Latest Phone</p>
+                                            <p style="font-size: 15px; padding-top: 20px;">Responsive HTML Email Templates that you can build around to master email development. Responsive HTML Email Templates.</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding-top: 30px;"><a href="https://example.com" style="text-decoration: none; background-color: coral;padding: 10px 15px 10px 15px; border-radius: 4px; color: white; font-size: 15px; font-weight: bold;">Read More</a></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--[if (gte mso 9)|(IE)]>
+                              </td>
+                              </tr>
+                              </table>
+                           <![endif]-->
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<!-- Start Second Row of 2 columns-->
+ <tr>
+    <td style="padding-top: 50px; padding-left: 0px; padding-bottom: 40px; padding-right: 0px;">
+        <table role="presentation" style="width: 100%; border-spacing: 0;">
+            <tr>
+                <td class="colwrap" style="text-align: center; font-size: 0; padding-left: 0; padding-right: 0;">
+<!--Column 1-->
+                   
+                   
+                   
+                   
+                   <!--[if (gte mso 9)|(IE)]>
+                              <table width="100%" style="border-spacing:0;" role="presentation">
+                              <tr>
+                              <td width="300" valign="top" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;">
+                           <![endif]-->
+                    <table role="presentation" style="display: inline-block; vertical-align: top; max-width: 300px; border-spacing: 0;">
+                        <tr>
+                            <td style="padding-bottom: 20px; padding-top: 20px; padding-left: 10px; padding-right: 10px;">
+                                <table style="border-spacing: 0;">
+                                    <tr>
+                                        <td style="border-radius: 4px;">
+                                            <a href=""><img src="https://via.placeholder.com/560x420" alt="" width="280" style="max-width:280px; border-width: 0; width: 100%; display: block; height: auto;"></a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--[if (gte mso 9)|(IE)]>
+                           </td><td width="300" valign="top" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;">
+                           <![endif]-->
+                           
+                           
+                           
+<!--Column 2-->
+                    <table role="presentation" style="display: inline-block; vertical-align: top; max-width: 300px; border-spacing: 0;">
+                        <tr>
+                            <td style="padding-left: 20px; padding-right: 10px; padding-top: 40px;">
+                               
+                                <table class="content" role="presentation" style="border-spacing: 0; text-align: left;">
+                                    <tr>
+                                        <td style="padding-top: 10px; padding-bottom: 20px; padding-left: 10px;">
+                                            <p style="font-weight: bold; font-size: 17px;">The Latest Phone</p>
+                                            <p style="font-size: 15px; padding-top: 20px;">Responsive HTML Email Templates that you can build around to master email development. Responsive HTML Email Templates.</p>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                       <td align="left" style="padding-left: 10px; padding-top: 20px;">
+                                          <table align="left" role="presentation" style="border-spacing: 0;" cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td align="center" style="border-radius: 4px;"><a href="https://example.com" style="text-decoration: none; background-color: coral;padding: 10px 15px 10px 15px; border-radius: 4px; color: white; font-size: 15px; font-weight: bold;">Read More</a></td>
+                                            </tr>
+                                        </table> 
+                                       </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--[if (gte mso 9)|(IE)]>
+                              </td>
+                              </tr>
+                              </table>
+                           <![endif]-->
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--Start Unbalanced Row 1: 
+
+Note. Row 1 and 2 are essentially identical. We've only switched the direction, on the colwrap td-->
+<tr>
+    <td style="padding-top: 50px; padding-left: 0px; padding-bottom: 40px; padding-right: 0px;">
+        <table role="presentation" style="width: 100%; border-spacing: 0;">
+            <tr>
+                <td class="colwrap" style="text-align: center; font-size: 0; padding-left: 0; padding-right: 0; direction: ltr;">
+<!--Column 1-->
+                   
+                   
+                   
+                   
+                   <!--[if (gte mso 9)|(IE)]>
+                              <table width="100%" style="border-spacing:0;" role="presentation">
+                              <tr>
+                              <td width="140" valign="top" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;">
+                           <![endif]-->
+                    <table role="presentation" style="display: inline-block; vertical-align: top; max-width: 140px; border-spacing: 0;">
+                        <tr>
+                            <td style="padding-bottom: 20px; padding-top: 20px; padding-left: 10px; padding-right: 10px;">
+                                <table style="border-spacing: 0;">
+                                    <tr>
+                                        <td style="border-radius: 4px;">
+                                            <a href=""><img src="https://via.placeholder.com/560x420" alt="" width="140" style="max-width:140px; border-width: 0; width: 100%; display: block; height: auto;"></a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--[if (gte mso 9)|(IE)]>
+                           </td><td width="450" valign="top" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;">
+                           <![endif]-->
+                           
+                           
+                           
+<!--Column 2-->
+                    <table role="presentation" style="display: inline-block; vertical-align: top; max-width: 450px; border-spacing: 0;">
+                        <tr>
+                            <td style="padding-left: 20px; padding-right: 10px;">
+                               
+                                <table class="content" role="presentation" style="border-spacing: 0; text-align: left;">
+                                    <tr>
+                                        <td style="padding-top: 10px; padding-bottom: 20px; padding-left: 10px;">
+                                            <p style="font-size: 15px; padding-top: 20px;">Responsive HTML Email Templates that you can build around to master email development. Responsive HTML Email Templates.Responsive HTML Email Templates that you can build around to master email development. Responsive HTML Email Templates.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--[if (gte mso 9)|(IE)]>
+                              </td>
+                              </tr>
+                              </table>
+                           <![endif]-->
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+<!--Start Unbalanced Row 2-->
+<!--Note. Row 1 and 2 are essentially identical. We've only switched the direction, on the colwrap td-->
+
+<tr>
+    <td style="padding-left: 0px; padding-bottom: 40px; padding-right: 0px;">
+        <table role="presentation" style="width: 100%; border-spacing: 0;">
+            <tr>
+                <td class="colwrap" style="text-align: center; font-size: 0; padding-left: 0; padding-right: 0; direction: rtl;">
+<!--Column 1-->
+                   
+                   
+                   
+                   
+                   <!--[if (gte mso 9)|(IE)]>
+                              <table width="100%" style="border-spacing:0;" role="presentation">
+                              <tr>
+                              <td width="140" valign="top" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;">
+                           <![endif]-->
+                    <table role="presentation" style="display: inline-block; vertical-align: top; max-width: 140px; border-spacing: 0;">
+                        <tr>
+                            <td style="padding-bottom: 20px; padding-top: 20px; padding-left: 10px; padding-right: 10px;">
+                                <table style="border-spacing: 0;">
+                                    <tr>
+                                        <td style="border-radius: 4px;">
+                                            <a href=""><img src="https://via.placeholder.com/560x420" alt="" width="140" style="max-width:140px; border-width: 0; width: 100%; display: block; height: auto;"></a>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--[if (gte mso 9)|(IE)]>
+                           </td><td width="450" valign="top" style="padding-top:0;padding-right:0;padding-bottom:0;padding-left:0;">
+                           <![endif]-->
+                           
+                           
+                           
+<!--Column 2-->
+                    <table role="presentation" style="display: inline-block; vertical-align: top; max-width: 450px; border-spacing: 0;">
+                        <tr>
+                            <td style="padding-left: 20px; padding-right: 10px;">
+                               
+                                <table class="content" role="presentation" style="border-spacing: 0; text-align: left;">
+                                    <tr>
+                                        <td style="padding-top: 10px; padding-bottom: 20px; padding-left: 10px;">
+                                            <p style="font-size: 15px; padding-top: 20px;">Responsive HTML Email Templates that you can build around to master email development. Responsive HTML Email Templates.Responsive HTML Email Templates that you can build around to master email development. Responsive HTML Email Templates.</p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                    <!--[if (gte mso 9)|(IE)]>
+                              </td>
+                              </tr>
+                              </table>
+                           <![endif]-->
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+
+
+
+
+
+
+
+
+
+
+<!--Start Social Icons-->
+<tr>
+    <td style="padding: 0; background-color: coral; padding-top: 10px; padding-bottom: 20px;">
+        <table style="width: 100%; border-spacing: 0; text-align: center;">
+            <tr>
+                <td style="padding-bottom: 10px; font-weight: bold; padding-top: 10px;">
+                    Connect With Us
+                </td>
+            </tr>
+            <tr>
+                <td style="padding-top: 10px;">
+                    <a href="https://example.com"><img src="https:/via.placeholder.com/30" alt=""></a>
+                    <a href="https://example.com"><img src="https:/via.placeholder.com/30" alt=""></a>
+                    <a href="https://example.com"><img src="https:/via.placeholder.com/30" alt=""></a>
+                    <a href="https://example.com"><img src="https:/via.placeholder.com/30" alt=""></a>
+                    <a href="https://example.com"><img src="https:/via.placeholder.com/30" alt=""></a>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+
+
+
+
+
+<!--Start Footer-->
+<tr>
+    <td>
+        <table style="width: 100%;">
+            <tr>
+                <td class="contwrap" style="text-align: center;">
+                    <table align="center" class="content">
+                        <tr>
+                            <td>
+                                <img src="https://via.placeholder.com/100" alt="">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>w3newbie HTML Email</p>
+                                <p>123 Street Road, City, State 55555</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a style="text-decoration: none; color: deepskyblue;" href="mailto:example@example.com">hello@example.com</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a style="text-decoration: none; color: deepskyblue;" href="tel:18005555555">1-800-555-5555</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <a style="text-decoration: none; color: deepskyblue;" href="https://example.com">Unsubscribe</a>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+
+
+
+
+<!--using display block on images will remove unwanted spacing underneath-->
+
+
+
+
+
+
+
+<!--Start Notes-->
+<tr>
+    <td>
+      <h3>Notes</h3>  
+    </td>
+</tr>
+ <tr>
+   <td>
+       <h3>Alignment</h3>
+       <p>If we need to center a block element, we can use align="center/left/right"</p>
+       <p>If we need to center an inline element (or inline-block) we can use text-align="center"</p>
+       <p>valign is used to with TD's to vertically align its content (which can be another table). When using valign to  align content, also add the css equiv, vertical-align</p>
+    </td>
+</tr>
+<tr>
+   <td>
+       <p>Outer TD's should have padding removed. Add it back in as necessary.</p>
+       <p>Outer tables should have border spacing 0 and width 100%;</p>
+       <p>Inner TD's can be used to add backgrounds, padding, alignment of content, and width, either pixel or percentage, and any other style you need (font, etc)</p>
+    </td>
+</tr>
+ <tr>
+   <td>
+       
+    </td>
+</tr>
+<tr>
+   <td>
+      <h3>Banners</h3>
+      <p>Inside Banner's, the tables will need cellpadding and cellspacing of 0. </p>
+       <p>A banner with text will go on a td as a background="https://yadayada" with explicit width and height attributes that match the dimensions of the image. </p>
+       <p>The td should also have a css att of background-position:"center top"</p>
+       <p>Outlook can't do background images, so we need a Conditional Statement to handle this for us. It's best just to copy the code. </p>
+       <p>Also, directly after your banner td, you will have 3 nested tables.</p>
+       <p>All 3 with a class of darkmode-transparent that will make our backgrounds transparent on darkmode (otherwise, they will shine right through the image on outlook). That should just say background-color: tranparent !important</p>
+       <p>Table 1: full frame. Td will be the full width of the email (width="600") and will vertically and horizontally center our next table (which will wrap the content table) with align="center" and valign="middle" on our td. </p>
+       <p>Table 2: centering table. Has no width and so will expand to the content size. The td will center align the content table. It's purpose is just to be in the middle, and house the content table. This also can have multiple rows if we want to separate our content into rows, with different styling or purposes, like a button for example. </p>
+       <p>Table 3: The final table wraps the content. The td can be used for alignment, and padding.</p>
+    </td>
+</tr>  
+<tr>
+   <td>
+       <p>To have space in between columns, we can just add a column with no content, give it a height, and a disappearing class on small screens</p>
+       <p>In order to get our columns to stack appropriately, we need to add a font-size of 0 on the column wrapper td. This will eliminate the inherent font-soze that td's have, in order to make our calculation accurate for stacking. </p>
+    </td>
+</tr>   
+<tr>
+   <td>
+       <h2>Issues</h2>
+      
+    </td>
+</tr>           
+<!-- END NOTES       -->
+       
+       
+       
+       <!--To Prepare for a New Email.
+Remove the background in the body, the center, the div and the table. 
+
+
+To add a full length background image, use the following code, added to the main table (row wrapper)
+
+background-image:url(https://d3k81ch9hvuctc.cloudfront.net/company/Tduyfg/images/2d891b21-04aa-4d37-86a9-ba61f4aace21.png); background-position:center top; background-repeat:no-repeat; height:100%; width:100%
+
+-->
+       
+       
+       
+       </table>
+       <!--[if (gte mso 9)|(IE)]>
+				</td>
+				</tr>
+				</table>
+			<![endif]-->
+        </div>
+    </center>
+</body>
+    
+</html>
